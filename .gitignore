@@ -1,0 +1,4 @@
+packages/
+Slacker/bin/
+*.user
+*.suo
