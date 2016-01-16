@@ -2,3 +2,4 @@ packages/
 Slacker/bin/
 *.user
 *.suo
+/Slacker/obj

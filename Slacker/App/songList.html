@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body ng-app="slacker">
+<script src="../Scripts/angular.js"></script>
+<script src="../Scripts/angular-animate.js"></script>
+<script src="../Scripts/angular-route.js"></script>
+<script src="app.js"></script>
+<script src="songListController.js"></script>
+<script src="data/dataContext.js"></script>
+<div ng-controller="songListController as vm">
+    <table>
+        <thead>
+        <tr>
+            <th>
+                <button ng-click="vm.sortList('Name')">Name</button>
+                <span class="sortorder" ng-show="vm.orderField === 'name'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="vm.sortList('PlayCount')">Play Count</button>
+                <span class="sortorder" ng-show="vm.orderField === 'PlayCount'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="vm.sortList('LastPlayed')">Last Played</button>
+                <span class="sortorder" ng-show="vm.orderField === 'LastPlayed'" ng-class="{reverse:reverse}"></span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="song in vm.songs | orderBy:vm.orderField:vm.reverse"
+            ng-class="song._ngClass">
+            <td><a href="http://www2.worshipteam.com/song-individual.php?song_id={{song.SongId}}">{{song.Name}}</a></td>
+            <td>{{song.PlayCount}}</td>
+            <td>{{song.LastPlayed | date:'mediumDate'}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
